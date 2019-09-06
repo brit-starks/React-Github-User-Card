@@ -10,7 +10,12 @@ class App extends React.Component {
     }
   }
 
-
+  componentDidMount() {
+    fetch('https://api.github.com/users/brit-starks')
+    .then(res => res.json())
+    .then(data => this.setState({ myData: data.data}))
+    .catch(err => console.log('Could not complete request: ', err));
+  };
 
   render(){
     
