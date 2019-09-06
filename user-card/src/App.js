@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+import User from './components/User';
+
 class App extends React.Component {
 
   constructor(){
@@ -13,8 +15,8 @@ class App extends React.Component {
   componentDidMount() {
     fetch('https://api.github.com/users/brit-starks')
     .then(res => res.json())
-    .then(data => this.setState({ myData: data.data}))
-    .catch(err => console.log('Could not complete request: ', err));
+    .then(data => this.setState({ myData: data}))
+    .catch(err => console.log('Unable to complete request: ', err));
   };
 
   render(){
@@ -23,6 +25,11 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1>User Card App</h1>
+          <div className="user">
+          {this.state.myData.map( data => (
+            <User myData={data} />
+          ))}
+          </div>
         </header>
       </div>
     );
