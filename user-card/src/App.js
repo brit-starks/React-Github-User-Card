@@ -1,37 +1,35 @@
 import React from 'react';
 import './App.css';
+import './app.scss';
 
-import User from './components/User';
+import UserHeader from './components/header/UserHeader';
+import UserDesription from './components/description/UserDescpristion';
+import NavBar from './components/header/NavBar';
 
 class App extends React.Component {
 
-  constructor(){
-    super();
-    this.state = {
+  state = {
       myData: []
-    }
-  }
+  };
 
   componentDidMount() {
     fetch('https://api.github.com/users/brit-starks')
     .then(res => res.json())
-    .then(data => this.setState({ myData: data}))
-    .catch(err => console.log('Unable to complete request: ', err));
+    .then(res => this.setState({ myData: res }))
+    .then(res => console.log(res))
+    .catch(err => console.log('Unable to Complete Request'));
   };
-
+  
   render(){
-    
     return (
+      <>
+        <NavBar />
+
       <div className="App">
-        <header className="App-header">
-          <h1>User Card App</h1>
-          <div className="user">
-          {this.state.myData.map( data => (
-            <User myData={data} />
-          ))}
-          </div>
-        </header>
+        <UserHeader data={this.state.myData}/>
+        <UserDesription data={this.state.myData} />
       </div>
+      </>
     );
   }
 }

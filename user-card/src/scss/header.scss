@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  margin: 0 auto;
+  width: 50rem;
+
+  .name {
+    margin: 8rem 1rem 0 1rem;
+    // padding: 3rem;
+    width: 35rem;
+    font-size: 2rem;
+  }
+
+  img {
+    // border-left: 1px solid black;
+    border-radius: 2rem;
+    // padding: 0 0 0 3rem;
+  }
+}
